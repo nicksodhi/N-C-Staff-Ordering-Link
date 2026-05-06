@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Naan & Curry – Order Organizer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; background: #0f0e0c; color: #f5ede0; min-height: 100vh; }
+
+    header {
+      background: linear-gradient(135deg, #8b2a00, #c8410b, #e8650a);
+      padding: 18px 18px 14px;
+      padding-top: max(18px, env(safe-area-inset-top));
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+      position: sticky; top: 0; z-index: 10;
+    }
+    header h1 { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: 0.05em; text-transform: uppercase; }
+    header p  { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+
+    .body { padding: 14px 13px 60px; max-width: 640px; margin: 0 auto; }
+
+    .input-card { background: #1a1814; border: 1px solid #2e2a25; border-radius: 12px; padding: 15px; margin-bottom: 13px; }
+    .input-card label { display: block; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: #c8814e; margin-bottom: 8px; font-weight: 600; }
+
+    textarea { width: 100%; min-height: 150px; background: #0f0e0c; border: 1px solid #2a2520; border-radius: 8px; color: #f0e8dc; font-size: 14px; line-height: 1.75; padding: 11px; resize: vertical; font-family: monospace; outline: none; }
+    textarea:focus { border-color: #c8410b; }
+
+    .btn-organize { margin-top: 11px; width: 100%; padding: 14px; background: linear-gradient(135deg, #c8410b, #e8650a); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+    .btn-organize:disabled { background: #3a2010; opacity: 0.45; cursor: not-allowed; }
+
+    .error-box { background: #2a0e0e; border: 1px solid #7a1818; border-radius: 8px; padding: 11px 13px; color: #f08080; font-size: 12px; margin-bottom: 13px; line-height: 1.65; word-break: break-all; display: none; }
+
+    .meta-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .meta-count { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a6858; }
+    .btn-copy-all { background: #1a1814; border: 1px solid #2e2a25; border-radius: 6px; color: #c8814e; padding: 6px 12px; font-size: 11px; cursor: pointer; letter-spacing: 0.06em; }
+    .btn-copy-all.copied { background: #1a3a1a; border-color: #3a7a3a; color: #6acc6a; }
+
+    .tab-row { display: flex; gap: 6px; margin-bottom: 13px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
+    .tab-row::-webkit-scrollbar { display: none; }
+    .tab-btn { padding: 8px 14px; border-radius: 20px; border: 1.5px solid #2e2a25; background: #1a1814; color: #9a8070; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; flex-shrink: 0; -webkit-tap-highlight-color: transparent; }
+    .tab-btn.active { border-color: #c8410b; background: #c8410b; color: #fff; font-weight: 700; }
+
+    .section-card { background: #1a1814; border: 1px solid #2a2520; border-radius: 10px; margin-bottom: 9px; overflow: hidden; }
+    .section-head { background: #231f1a; padding: 9px 13px; border-bottom: 1px solid #2a2520; display: flex; align-items: center; gap: 7px; }
+    .section-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #e8a070; font-weight: 700; }
+    .section-badge { margin-left: auto; background: #2e2a25; border-radius: 10px; padding: 2px 7px; font-size: 10px; color: #9a8070; }
+    .item-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 13px; border-bottom: 1px solid #1e1b17; }
+    .item-row:last-child { border-bottom: none; }
+    .item-name { font-size: 13px; color: #f0e8dc; }
+    .item-qty { font-size: 11px; color: #c8814e; font-family: monospace; background: #231f1a; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+
+    #results { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span style="font-size:26px">🍛</span>
+  <div><h1>Naan &amp; Curry</h1><p>Order List Organizer</p></div>
+</header>
+
+<div class="body">
+  <div class="input-card">
+    <label>Paste Chef's Order List</label>
+    <textarea id="input" placeholder="*Produce:&#10;Yellow onion – 14 bag&#10;Green chili – 1 case&#10;&#10;*Dairy:&#10;Cream – 1 case&#10;Yoghurt – 1 bucket&#10;..."></textarea>
+    <button class="btn-organize" id="btn-organize" onclick="organize()">✦ Organize List</button>
+  </div>
+
+  <div class="error-box" id="error-box"></div>
+
+  <div id="results">
+    <div class="meta-row">
+      <span class="meta-count" id="meta-count"></span>
+      <button class="btn-copy-all" id="btn-copy-all" onclick="copyAll()">📋 Copy All</button>
+    </div>
+    <div class="tab-row" id="tab-row"></div>
+    <div id="tab-content"></div>
+  </div>
+</div>
+
+<script>
+const TABS = [
+  {
+    key: 'rd', label: 'Restaurant Depot', emoji: '🏪',
+    categories: [
+      { key: 'produce',    label: 'Produce',                emoji: '🥦' },
+      { key: 'dairy',      label: 'Dairy',                  emoji: '🥛' },
+      { key: 'proteins',   label: 'Proteins',               emoji: '🍗' },
+      { key: 'goat_dairy', label: 'Goat / Cheese / Yogurt', emoji: '🐐' },
+      { key: 'freezer',    label: 'Freezer Area (Outside)', emoji: '🧊' },
+      { key: 'dry_goods',  label: 'Dry Goods',              emoji: '🌾' },
+      { key: 'oils',       label: 'Oils, Sauces & Liquids', emoji: '🫙' },
+      { key: 'beverages',  label: 'Beverages',              emoji: '🥤' },
+      { key: 'misc',       label: 'Misc & Supplies',        emoji: '🗂️' },
+    ]
+  },
+  { key: 'indian',      label: 'Indian Store',  emoji: '🌶️', categories: [{ key: 'indian_store',  label: 'Indian Store Items', emoji: '🌶️' }] },
+  { key: 'kitchen',     label: 'Main Kitchen',  emoji: '👨‍🍳', categories: [{ key: 'kitchen_prep',  label: 'Main Kitchen Prep',  emoji: '👨‍🍳' }] },
+  {
+    key: 'disposables', label: 'Disposables', emoji: '📦',
+    categories: [
+      { key: 'bags',       label: 'Bags & Liners',         emoji: '🛍️' },
+      { key: 'containers', label: 'Containers & Cups',     emoji: '🥡' },
+      { key: 'cleaning',   label: 'Cleaning & Janitorial', emoji: '🧴' },
+      { key: 'service',    label: 'Service Supplies',      emoji: '🧤' },
+    ]
+  }
+];
+
+const PROMPT = `You are an assistant for Naan & Curry restaurant. Parse a raw order list and categorize each item.
+
+RD tab follows PHYSICAL STORE LAYOUT in this exact order:
+  produce: vegetables, herbs, AP flour, all-purpose flour, green chilies, mint, garlic, onions, ginger, lemon, paneer, cauliflower, fresh spinach, cucumber, carrots, bell pepper
+  dairy: Heavy Cream and Milk ONLY (not yogurt, not cheese)
+  proteins: Chicken Breast, Chicken Leg Quarters, Chicken Wings, Chicken Leg Meat, Lamb ONLY (not goat, not shrimp, not fish)
+  goat_dairy: Goat Meat/Cubes, Cheese, Yogurt — comes AFTER proteins at butcher/deli counter
+  freezer: Shrimp (any size/pack), Fish/Tilapia, Frozen Spinach, Chopped Spinach, Frozen Peas, Frozen Broccoli, Frozen 4-Way Mix — outside freezer AFTER goat_dairy
+  dry_goods: Rice, Atta, Baking Powder, Corn Starch, Garbanzo, Kidney Beans, Salt, Sugar, Tomato Puree, Tomato Sauce, Petite Tomato Dice, Ketchup
+  oils: Cooking Oil, Salad Oil, Frying Oil, Fryer Oil, Liquid Butter, Vinegar, Lemon Juice, Sambal
+  beverages: Water, Coca-Cola, Diet Coca-Cola, Sprite, Fanta ONLY — no other drinks
+  misc: Food Coloring, Printer Paper, Smiley Bags
+
+TAB indian → indian_store: all spices, masalas, ghee, besan, papad, tamarind, mango pulp, curry leaves, biryani mix, rose water, amchoor, mustard oil, mace. ALSO here (NEVER in rd beverages): Limca, Thumbs Up, Mazaa Mango, Mazaa Lychee.
+
+TAB kitchen → kitchen_prep: Makhani Sauce, Onion Gravy, Chicken Curry, Lamb Curry, Onion Tadka
+
+TAB disposables: bags (paper bags, trash liners) | containers (deli containers, portion cups, foam, lids) | cleaning (Sanitizer, Dish Soap, Paper Towels, Toilet Paper) | service (Cutlery Kits, Straws, Gloves, Plastic Film, Aluminum Foil)
+
+RULES:
+- Yoghurt/Yogurt → goat_dairy
+- Goat → goat_dairy
+- Shrimp (any) → freezer
+- Fish → freezer
+- Frozen anything → freezer
+- Limca / Thumbs Up / Mazaa → indian_store
+- Cutlery kit → service
+- AP Flour / A.P. Flour → produce
+- Salad Oil / Frying Oil / Fryer Oil → oils
+- "Chicken breast B/L" = Chicken Breast → proteins
+
+Return ONLY a JSON array, no markdown:
+[{"name":"Yellow Onions","quantity":"14 bag","tab":"rd","category":"produce"}]`;
+
+let parsedItems = [];
+let activeTab   = null;
+
+async function organize() {
+  const input = document.getElementById('input').value.trim();
+  if (!input) return;
+
+  const btn = document.getElementById('btn-organize');
+  btn.disabled = true;
+  btn.textContent = '⏳ Organizing...';
+  hideError();
+  document.getElementById('results').style.display = 'none';
+
+  try {
+    const res = await fetch('/api/parse', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1500,
+        messages: [{ role: 'user', content: PROMPT + '\n\nOrder list:\n\n' + input }]
+      })
+    });
+
+    const data = await res.json();
+    if (data.error) { showError('API error: ' + (data.error.message || JSON.stringify(data.error))); return; }
+
+    const text  = (data.content || []).map(b => b.text || '').join('').trim();
+    const match = text.match(/\[[\s\S]*\]/);
+    if (!match) { showError('Could not read response. Try again.'); return; }
+
+    parsedItems = JSON.parse(match[0]);
+    renderResults();
+  } catch(e) {
+    showError('Error: ' + (e.message || String(e)));
+  } finally {
+    btn.disabled    = false;
+    btn.textContent = '✦ Organize List';
+  }
+}
+
+function renderResults() {
+  const withItems = TABS.filter(t => parsedItems.some(i => i.tab === t.key));
+  if (!withItems.length) { showError('No items recognized. Check the list format.'); return; }
+
+  document.getElementById('meta-count').textContent =
+    parsedItems.length + ' items · ' + withItems.length + ' section' + (withItems.length !== 1 ? 's' : '');
+
+  const tabRow = document.getElementById('tab-row');
+  tabRow.innerHTML = '';
+  withItems.forEach(tab => {
+    const count = parsedItems.filter(i => i.tab === tab.key).length;
+    const btn   = document.createElement('button');
+    btn.className    = 'tab-btn';
+    btn.textContent  = tab.emoji + ' ' + tab.label + ' (' + count + ')';
+    btn.dataset.tab  = tab.key;
+    btn.onclick      = () => switchTab(tab.key);
+    tabRow.appendChild(btn);
+  });
+
+  activeTab = withItems[0].key;
+  renderTab();
+  document.getElementById('results').style.display = 'block';
+}
+
+function switchTab(key) {
+  activeTab = key;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === key));
+  renderTab();
+}
+
+function renderTab() {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === activeTab));
+  const tab     = TABS.find(t => t.key === activeTab);
+  const content = document.getElementById('tab-content');
+  content.innerHTML = '';
+
+  const items  = parsedItems.filter(i => i.tab === activeTab);
+  const groups = {};
+  items.forEach(i => { (groups[i.category] = groups[i.category] || []).push(i); });
+
+  tab.categories.forEach(cat => {
+    const ci = groups[cat.key];
+    if (!ci || !ci.length) return;
+    const card = document.createElement('div');
+    card.className = 'section-card';
+    card.innerHTML =
+      '<div class="section-head">' +
+        '<span style="font-size:13px">' + cat.emoji + '</span>' +
+        '<span class="section-label">' + cat.label + '</span>' +
+        '<span class="section-badge">' + ci.length + '</span>' +
+      '</div>' +
+      ci.map(item =>
+        '<div class="item-row">' +
+          '<span class="item-name">' + item.name + '</span>' +
+          (item.quantity ? '<span class="item-qty">' + item.quantity + '</span>' : '') +
+        '</div>'
+      ).join('');
+    content.appendChild(card);
+  });
+}
+
+function copyAll() {
+  const lines = [];
+  TABS.forEach(tab => {
+    const items = parsedItems.filter(i => i.tab === tab.key);
+    if (!items.length) return;
+    lines.push(tab.emoji + ' ' + tab.label.toUpperCase());
+    const groups = {};
+    items.forEach(i => { (groups[i.category] = groups[i.category] || []).push(i); });
+    tab.categories.forEach(cat => {
+      const ci = groups[cat.key];
+      if (!ci) return;
+      lines.push(cat.emoji + ' ' + cat.label);
+      ci.forEach(i => lines.push('• ' + i.name + (i.quantity ? ' – ' + i.quantity : '')));
+    });
+    lines.push('');
+  });
+  navigator.clipboard.writeText(lines.join('\n').trim()).then(() => {
+    const btn = document.getElementById('btn-copy-all');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy All'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function showError(msg) { const e = document.getElementById('error-box'); e.textContent = msg; e.style.display = 'block'; }
+function hideError()    { document.getElementById('error-box').style.display = 'none'; }
+</script>
+</body>
+</html>
