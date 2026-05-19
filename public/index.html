@@ -9,7 +9,6 @@
   :root {
     --saffron: #F4A22D;
     --saffron-light: #FDE9BF;
-    --spice: #C0392B;
     --cardamom: #2C2416;
     --cream: #FDF6EC;
     --moss: #4A6741;
@@ -18,57 +17,36 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { -webkit-text-size-adjust: 100%; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    min-height: 100vh;
-    color: var(--cardamom);
-    background-image:
-      radial-gradient(ellipse at 0% 0%, rgba(244,162,45,0.12) 0%, transparent 50%),
-      radial-gradient(ellipse at 100% 100%, rgba(192,57,43,0.08) 0%, transparent 50%);
-    overscroll-behavior: none;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); min-height: 100vh; color: var(--cardamom); overscroll-behavior: none; }
 
-  header {
-    background: var(--cardamom);
-    padding: 14px 16px;
-    padding-top: max(14px, env(safe-area-inset-top));
-    display: flex; align-items: center; gap: 12px;
-    position: sticky; top: 0; z-index: 10;
-    box-shadow: 0 2px 20px rgba(44,36,22,0.35);
-  }
+  header { background: var(--cardamom); padding: 14px 16px; padding-top: max(14px, env(safe-area-inset-top)); display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 20px rgba(44,36,22,0.35); }
   .logo-mark { width: 38px; height: 38px; background: var(--saffron); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
   .header-text h1 { font-family: 'Playfair Display', serif; font-size: 17px; color: #fff; line-height: 1; }
   .header-text p { font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; }
 
   .container { max-width: 640px; margin: 0 auto; padding: 16px 14px 140px; }
 
-  /* Recipients */
   .recipients-block { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
   .recipients-header { padding: 10px 14px; background: rgba(244,162,45,0.08); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); border-bottom: 1px solid var(--border); }
   .recipients-list { padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
   .recipient-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--border); cursor: pointer; transition: all 0.18s; user-select: none; min-height: 56px; -webkit-tap-highlight-color: transparent; }
   .recipient-row.selected { border-color: var(--moss); background: rgba(74,103,65,0.08); }
-  .recipient-check { width: 24px; height: 24px; border-radius: 7px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.18s; font-size: 13px; }
+  .recipient-check { width: 24px; height: 24px; border-radius: 7px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; }
   .recipient-row.selected .recipient-check { background: var(--moss); border-color: var(--moss); color: #fff; }
-  .recipient-info { flex: 1; }
-  .recipient-name { font-size: 15px; font-weight: 600; color: var(--cardamom); }
+  .recipient-name { font-size: 15px; font-weight: 600; }
   .recipient-phone { font-size: 12px; color: var(--warm-gray); margin-top: 2px; }
 
-  /* Meta bar */
   .meta-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
   .meta-field label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 5px; }
-  .meta-field select, .meta-field input[type="text"] { width: 100%; padding: 12px 13px; border: 1.5px solid var(--border); border-radius: 10px; background: #fff; font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--cardamom); appearance: none; -webkit-appearance: none; outline: none; transition: border-color 0.2s; }
-  .meta-field select:focus, .meta-field input[type="text"]:focus { border-color: var(--saffron); }
+  .meta-field select, .meta-field input[type="text"] { width: 100%; padding: 12px 13px; border: 1.5px solid var(--border); border-radius: 10px; background: #fff; font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--cardamom); appearance: none; -webkit-appearance: none; outline: none; }
+  .meta-field select:focus, .meta-field input:focus { border-color: var(--saffron); }
 
-  /* Tabs */
-  .list-tabs { display: flex; gap: 7px; margin-bottom: 14px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .list-tabs { display: flex; gap: 7px; margin-bottom: 14px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
   .list-tabs::-webkit-scrollbar { display: none; }
   .tab-btn { padding: 9px 15px; border-radius: 22px; border: 1.5px solid var(--border); background: #fff; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--warm-gray); cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; -webkit-tap-highlight-color: transparent; min-height: 40px; }
   .tab-btn.active { background: var(--cardamom); border-color: var(--cardamom); color: var(--saffron); font-weight: 600; }
   .badge { display: none; background: var(--saffron); color: var(--cardamom); border-radius: 10px; font-size: 10px; font-weight: 700; padding: 1px 6px; margin-left: 4px; }
 
-  /* List panels */
   .list-panel { display: none; }
   .list-panel.active { display: block; }
 
@@ -80,36 +58,31 @@
 
   .item-row { display: flex; align-items: center; padding: 13px 14px; border-bottom: 1px solid rgba(244,162,45,0.1); gap: 10px; min-height: 54px; }
   .item-row:last-child { border-bottom: none; }
-  .item-name { flex: 1; font-size: 14px; font-weight: 400; color: var(--cardamom); line-height: 1.3; }
-  .item-hint { font-size: 11px; color: var(--warm-gray); display: block; margin-top: 2px; }
+  .item-name { flex: 1; font-size: 14px; color: var(--cardamom); line-height: 1.3; }
   .item-unit { font-size: 11px; color: var(--warm-gray); min-width: 32px; text-align: right; flex-shrink: 0; }
 
-  .qty-input { width: 72px; height: 44px; padding: 0 8px; border: 1.5px solid rgba(244,162,45,0.3); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; text-align: center; color: var(--cardamom); background: var(--cream); outline: none; transition: border-color 0.2s, background 0.2s; -moz-appearance: textfield; flex-shrink: 0; -webkit-tap-highlight-color: transparent; }
+  .qty-input { width: 72px; height: 44px; padding: 0 8px; border: 1.5px solid rgba(244,162,45,0.3); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; text-align: center; color: var(--cardamom); background: var(--cream); outline: none; transition: border-color 0.2s, background 0.2s; -moz-appearance: textfield; flex-shrink: 0; }
   .qty-input::-webkit-inner-spin-button, .qty-input::-webkit-outer-spin-button { -webkit-appearance: none; }
   .qty-input:focus { border-color: var(--saffron); background: var(--saffron-light); }
   .qty-input.has-value { border-color: var(--moss); background: rgba(74,103,65,0.09); color: var(--moss); }
 
-  /* Notes */
   .notes-area { background: #fff; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
   .notes-header { padding: 10px 14px; background: rgba(244,162,45,0.08); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-gray); border-bottom: 1px solid var(--border); }
   .notes-area textarea { width: 100%; padding: 12px 14px; border: none; outline: none; font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--cardamom); resize: none; min-height: 70px; background: transparent; }
 
-  /* Submit bar */
   .submit-bar { position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 14px; padding-bottom: max(14px, env(safe-area-inset-bottom)); background: rgba(253,246,236,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid var(--border); display: flex; gap: 9px; z-index: 20; }
-  .btn { flex: 1; padding: 16px 14px; border: none; border-radius: 13px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; -webkit-tap-highlight-color: transparent; min-height: 52px; }
+  .btn { flex: 1; padding: 16px 14px; border: none; border-radius: 13px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; -webkit-tap-highlight-color: transparent; min-height: 52px; }
   .btn:active { opacity: 0.85; }
-  .btn-sms { background: var(--saffron); color: var(--cardamom); flex: 2; }
+  .btn-sms  { background: var(--saffron); color: var(--cardamom); flex: 2; }
   .btn-copy { background: var(--cardamom); color: #fff; }
   .btn-reset { background: transparent; border: 1.5px solid var(--border); color: var(--warm-gray); flex: 0.55; font-size: 20px; }
 
-  /* Toast */
   .toast { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-16px); background: var(--cardamom); color: #fff; padding: 10px 20px; border-radius: 50px; font-size: 13px; font-weight: 500; opacity: 0; transition: all 0.28s; z-index: 100; white-space: nowrap; pointer-events: none; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* Overlay */
-  .overlay { position: fixed; inset: 0; background: rgba(44,36,22,0.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 50; display: none; align-items: flex-end; justify-content: center; }
+  .overlay { position: fixed; inset: 0; background: rgba(44,36,22,0.55); backdrop-filter: blur(4px); z-index: 50; display: none; align-items: flex-end; justify-content: center; }
   .overlay.show { display: flex; }
-  .preview-sheet { background: #fff; border-radius: 20px 20px 0 0; padding: 20px 18px; padding-bottom: max(24px, env(safe-area-inset-bottom)); width: 100%; max-width: 640px; max-height: 85vh; overflow-y: auto; -webkit-overflow-scrolling: touch; animation: slideUp 0.28s ease; }
+  .preview-sheet { background: #fff; border-radius: 20px 20px 0 0; padding: 20px 18px; padding-bottom: max(24px, env(safe-area-inset-bottom)); width: 100%; max-width: 640px; max-height: 85vh; overflow-y: auto; animation: slideUp 0.28s ease; }
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
   .preview-handle { width: 40px; height: 5px; background: rgba(44,36,22,0.12); border-radius: 3px; margin: 0 auto 16px; }
   .preview-title { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 12px; color: var(--cardamom); }
@@ -146,28 +119,20 @@
 
 <div class="container">
 
-  <!-- Recipients -->
   <div class="recipients-block">
     <div class="recipients-header">📲 Send List To</div>
     <div class="recipients-list">
       <div class="recipient-row selected" id="rcpt-rahul" data-rcpt="rahul">
         <div class="recipient-check" id="check-rahul">✓</div>
-        <div class="recipient-info">
-          <div class="recipient-name">Rahul</div>
-          <div class="recipient-phone">+1 (559) 630-5815</div>
-        </div>
+        <div><div class="recipient-name">Rahul</div><div class="recipient-phone">+1 (559) 630-5815</div></div>
       </div>
       <div class="recipient-row selected" id="rcpt-nick" data-rcpt="nick">
         <div class="recipient-check" id="check-nick">✓</div>
-        <div class="recipient-info">
-          <div class="recipient-name">Nick</div>
-          <div class="recipient-phone">+1 (602) 515-2385</div>
-        </div>
+        <div><div class="recipient-name">Nick</div><div class="recipient-phone">+1 (602) 515-2385</div></div>
       </div>
     </div>
   </div>
 
-  <!-- Meta -->
   <div class="meta-bar">
     <div class="meta-field">
       <label>Location</label>
@@ -185,7 +150,6 @@
     </div>
   </div>
 
-  <!-- Tabs -->
   <div class="list-tabs">
     <button class="tab-btn active" data-tab="rd">🏪 Restaurant Depot <span class="badge" id="badge-rd"></span></button>
     <button class="tab-btn" data-tab="indian">🌶️ Indian Store <span class="badge" id="badge-indian"></span></button>
@@ -199,117 +163,115 @@
     <div class="section">
       <div class="section-header"><span class="section-icon">🥦</span><span class="section-title">Produce</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Yellow Onions<span class="item-hint">50 lb bag</span></span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Yellow Onions (50lb bag)" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Red Onions<span class="item-hint">25 lb bag</span></span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Red Onions (25lb bag)" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Potato</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Potato" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Garlic</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Garlic" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Ginger</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Ginger" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Paneer</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Paneer" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Cauliflower</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Cauliflower" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Green Onions</span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Green Onions" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Carrots<span class="item-hint">25 lb bag</span></span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Carrots (25lb bag)" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Fresh Spinach</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Fresh Spinach" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Green Bell Pepper</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Green Bell Pepper" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Lemon</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Lemon" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Mint</span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Mint" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Cilantro</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Cilantro" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Green Chilies</span><span class="item-unit">lbs</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Green Chilies" data-unit="lbs"/></div>
-        <div class="item-row"><span class="item-name">Cucumber<span class="item-hint">6-pk</span></span><span class="item-unit">packs</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Cucumber (6-pk)" data-unit="packs"/></div>
-        <div class="item-row"><span class="item-name">All Purpose Flour<span class="item-hint">25 lb</span></span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="All Purpose Flour (25lb)" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Flowers<span class="item-hint">garnish</span></span><span class="item-unit">bunch</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Flowers (garnish)" data-unit="bunch"/></div>
+        <div class="item-row"><span class="item-name">Yellow Onions (50lb bag)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Yellow Onions (50lb bag)"/></div>
+        <div class="item-row"><span class="item-name">Red Onions (25lb bag)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Red Onions (25lb bag)"/></div>
+        <div class="item-row"><span class="item-name">Potato</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Potato"/></div>
+        <div class="item-row"><span class="item-name">Garlic</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Garlic"/></div>
+        <div class="item-row"><span class="item-name">Ginger</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Ginger"/></div>
+        <div class="item-row"><span class="item-name">Paneer</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Paneer"/></div>
+        <div class="item-row"><span class="item-name">Flowers (garnish)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Flowers (garnish)"/></div>
+        <div class="item-row"><span class="item-name">Cauliflower</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Cauliflower"/></div>
+        <div class="item-row"><span class="item-name">Green Onions</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Green Onions"/></div>
+        <div class="item-row"><span class="item-name">Carrots (25lb bag)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Carrots (25lb bag)"/></div>
+        <div class="item-row"><span class="item-name">Fresh Spinach</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Fresh Spinach"/></div>
+        <div class="item-row"><span class="item-name">Green Bell Pepper</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Green Bell Pepper"/></div>
+        <div class="item-row"><span class="item-name">Lemon</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Lemon"/></div>
+        <div class="item-row"><span class="item-name">Mint</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Mint"/></div>
+        <div class="item-row"><span class="item-name">Cilantro</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Cilantro"/></div>
+        <div class="item-row"><span class="item-name">Green Chilies</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Green Chilies"/></div>
+        <div class="item-row"><span class="item-name">Cucumber (6-pk)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Cucumber (6-pk)"/></div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-header"><span class="section-icon">🥛</span><span class="section-title">Dairy</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Heavy Cream</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Heavy Cream" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Milk</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Milk" data-unit="case"/></div>
+        <div class="item-row"><span class="item-name">Heavy Cream</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Heavy Cream"/></div>
+        <div class="item-row"><span class="item-name">Milk</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Milk"/></div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-header"><span class="section-icon">🍗</span><span class="section-title">Proteins</span></div>
+      <div class="section-header"><span class="section-icon">🍗</span><span class="section-title">Proteins & Butcher Counter</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Chicken Breast</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Chicken Breast" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Chicken Leg Quarters<span class="item-hint">bone-in</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Chicken Leg Quarters (bone-in)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Chicken Wings</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Chicken Wings" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Chicken Leg Meat</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Chicken Leg Meat" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Lamb Leg Boneless</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Lamb Leg Boneless" data-unit="case"/></div>
+        <div class="item-row"><span class="item-name">Chicken Breast</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Chicken Breast"/></div>
+        <div class="item-row"><span class="item-name">Chicken Leg Quarters (bone-in)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Chicken Leg Quarters (bone-in)"/></div>
+        <div class="item-row"><span class="item-name">Chicken Wings</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Chicken Wings"/></div>
+        <div class="item-row"><span class="item-name">Chicken Leg Meat</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Chicken Leg Meat"/></div>
+        <div class="item-row"><span class="item-name">Lamb Leg Boneless</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Lamb Leg Boneless"/></div>
+        <div class="item-row"><span class="item-name">Goat Cubes</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Goat Cubes"/></div>
+        <div class="item-row"><span class="item-name">Cheese Blend</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Cheese Blend"/></div>
+        <div class="item-row"><span class="item-name">Yogurt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Yogurt"/></div>
       </div>
     </div>
 
-    <!-- Goat / Cheese / Yogurt — after proteins at butcher counter -->
-    <div class="section">
-      <div class="section-header"><span class="section-icon">🐐</span><span class="section-title">Goat / Cheese / Yogurt</span></div>
-      <div class="section-body">
-        <div class="item-row"><span class="item-name">Goat Cubes</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Goat Cubes" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Cheese Blend</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Cheese Blend" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Yogurt</span><span class="item-unit">bucket</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Yogurt" data-unit="bucket"/></div>
-      </div>
-    </div>
-
-    <!-- Freezer Area — outside, after goat/cheese/yogurt -->
     <div class="section">
       <div class="section-header"><span class="section-icon">🧊</span><span class="section-title">Freezer Area (Outside)</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Shrimp 16–18</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Shrimp 16-18" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Fish (Tilapia)</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Fish (Tilapia)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Frozen Spinach</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Frozen Spinach" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Frozen Green Peas</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Frozen Green Peas" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Frozen Broccoli</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Frozen Broccoli" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Frozen 4-Way Mix</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Frozen 4-Way Mix" data-unit="case"/></div>
+        <div class="item-row"><span class="item-name">Shrimp 16-18</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Shrimp 16-18"/></div>
+        <div class="item-row"><span class="item-name">Fish (Tilapia)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Fish (Tilapia)"/></div>
+        <div class="item-row"><span class="item-name">Frozen Spinach</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Frozen Spinach"/></div>
+        <div class="item-row"><span class="item-name">Frozen Green Peas</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Frozen Green Peas"/></div>
+        <div class="item-row"><span class="item-name">Frozen Broccoli</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Frozen Broccoli"/></div>
+        <div class="item-row"><span class="item-name">Frozen 4-Way Mix</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Frozen 4-Way Mix"/></div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-header"><span class="section-icon">🌾</span><span class="section-title">Dry Goods</span></div>
+      <div class="section-header"><span class="section-icon">🥫</span><span class="section-title">Canned & Tomato</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Roti Atta<span class="item-hint">Golden Temple</span></span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Roti Atta – Golden Temple" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Baking Powder</span><span class="item-unit">cans</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Baking Powder" data-unit="cans"/></div>
-        <div class="item-row"><span class="item-name">Corn Starch</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Corn Starch" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Rice<span class="item-hint">Royal, 50 lb</span></span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Rice – Royal (50lb bag)" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Garbanzo<span class="item-hint">6-pk</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Garbanzo (6-pk)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Red Kidney<span class="item-hint">6-pk</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Red Kidney (6-pk)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Salt<span class="item-hint">50 lb</span></span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Salt (50lb bag)" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Sugar<span class="item-hint">25 lb</span></span><span class="item-unit">bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Sugar (25lb bag)" data-unit="bags"/></div>
-        <div class="item-row"><span class="item-name">Tomato Puree<span class="item-hint">6-pk</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Tomato Puree (6-pk)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Tomato Sauce<span class="item-hint">6-pk</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Tomato Sauce (6-pk)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Petite Tomato<span class="item-hint">6-pk</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Petite Tomato (6-pk)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Ketchup (can)</span><span class="item-unit">cans</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Ketchup (can)" data-unit="cans"/></div>
+        <div class="item-row"><span class="item-name">Tomato Puree (6-pk)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Tomato Puree (6-pk)"/></div>
+        <div class="item-row"><span class="item-name">Tomato Sauce (6-pk)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Tomato Sauce (6-pk)"/></div>
+        <div class="item-row"><span class="item-name">Petite Tomato (6-pk)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Petite Tomato (6-pk)"/></div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-header"><span class="section-icon">🫙</span><span class="section-title">Oils, Sauces &amp; Liquids</span></div>
+      <div class="section-header"><span class="section-icon">🫙</span><span class="section-title">Oils & Sauces</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">White Vinegar<span class="item-hint">4-pk</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="White Vinegar (4-pk)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Liquid Butter</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Liquid Butter" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Salad Oil</span><span class="item-unit">gal</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Salad Oil" data-unit="gal"/></div>
-        <div class="item-row"><span class="item-name">Fryer Oil</span><span class="item-unit">gal</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Fryer Oil" data-unit="gal"/></div>
-        <div class="item-row"><span class="item-name">Lemon Juice<span class="item-hint">4-pk</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Lemon Juice (4-pk)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Sambal Chili Jar</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Sambal Chili Jar" data-unit="case"/></div>
+        <div class="item-row"><span class="item-name">White Vinegar (4-pk)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="White Vinegar (4-pk)"/></div>
+        <div class="item-row"><span class="item-name">Liquid Butter</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Liquid Butter"/></div>
+        <div class="item-row"><span class="item-name">Salad Oil</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Salad Oil"/></div>
+        <div class="item-row"><span class="item-name">Fryer Oil</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Fryer Oil"/></div>
+        <div class="item-row"><span class="item-name">Sambal Chili Jar</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Sambal Chili Jar"/></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><span class="section-icon">🌾</span><span class="section-title">Dry Goods & Misc</span></div>
+      <div class="section-body">
+        <div class="item-row"><span class="item-name">Roti Atta – Golden Temple</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Roti Atta – Golden Temple"/></div>
+        <div class="item-row"><span class="item-name">All Purpose Flour (25lb)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="All Purpose Flour (25lb)"/></div>
+        <div class="item-row"><span class="item-name">Baking Powder</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Baking Powder"/></div>
+        <div class="item-row"><span class="item-name">Corn Starch</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Corn Starch"/></div>
+        <div class="item-row"><span class="item-name">Rice – Royal (50lb bag)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Rice – Royal (50lb bag)"/></div>
+        <div class="item-row"><span class="item-name">Red Food Color (4-gal)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Red Food Color (4-gal)"/></div>
+        <div class="item-row"><span class="item-name">Egg Yellow Color (4-gal)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Egg Yellow Color (4-gal)"/></div>
+        <div class="item-row"><span class="item-name">Garbanzo (6-pk)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Garbanzo (6-pk)"/></div>
+        <div class="item-row"><span class="item-name">Red Kidney (6-pk)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Red Kidney (6-pk)"/></div>
+        <div class="item-row"><span class="item-name">Salt (50lb bag)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Salt (50lb bag)"/></div>
+        <div class="item-row"><span class="item-name">Sugar (25lb bag)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Sugar (25lb bag)"/></div>
+        <div class="item-row"><span class="item-name">Ketchup (can)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Ketchup (can)"/></div>
+        <div class="item-row"><span class="item-name">Smiley To-Go Bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Smiley To-Go Bags"/></div>
+        <div class="item-row"><span class="item-name">Lemon Juice (4-pk)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Lemon Juice (4-pk)"/></div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-header"><span class="section-icon">🥤</span><span class="section-title">Beverages</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Water</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Water" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Coca-Cola</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Coca-Cola" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Diet Coca-Cola</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Diet Coca-Cola" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Sprite</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Sprite" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Fanta</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Fanta" data-unit="cases"/></div>
+        <div class="item-row"><span class="item-name">Water</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Water"/></div>
+        <div class="item-row"><span class="item-name">Coca-Cola</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Coca-Cola"/></div>
+        <div class="item-row"><span class="item-name">Diet Coca-Cola</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Diet Coca-Cola"/></div>
+        <div class="item-row"><span class="item-name">Sprite</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Sprite"/></div>
+        <div class="item-row"><span class="item-name">Fanta</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Fanta"/></div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-header"><span class="section-icon">🗂️</span><span class="section-title">Misc &amp; Supplies</span></div>
+      <div class="section-header"><span class="section-icon">🖨️</span><span class="section-title">Supplies</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Red Food Color<span class="item-hint">4-gal</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Red Food Color (4-gal)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Egg Yellow Color<span class="item-hint">4-gal</span></span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Egg Yellow Color (4-gal)" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Smiley To-Go Bags</span><span class="item-unit">boxes</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Smiley To-Go Bags" data-unit="boxes"/></div>
-        <div class="item-row"><span class="item-name">Printer Paper Roll</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Printer Paper Roll" data-unit="case"/></div>
+        <div class="item-row"><span class="item-name">Printer Paper Roll</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="RD" data-item="Printer Paper Roll"/></div>
       </div>
     </div>
 
@@ -324,40 +286,40 @@
     <div class="section">
       <div class="section-header"><span class="section-icon">🌶️</span><span class="section-title">Indian Store Items</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Bombay Biryani Mix</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Bombay Biryani Mix" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Curry Leaves</span><span class="item-unit">bunch</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Curry Leaves" data-unit="bunch"/></div>
-        <div class="item-row"><span class="item-name">Pilau Biryani Mix (Mild)</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Pilau Biryani Mix (Mild)" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Rogan Josh Masala</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Rogan Josh Masala" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Madras Curry Powder</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Madras Curry Powder" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Garam Masala</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Garam Masala" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Tandoori Masala</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Tandoori Masala" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Cumin Powder</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cumin Powder" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Cumin Seeds</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cumin Seeds" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Coriander Powder</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Coriander Powder" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Turmeric Powder</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Turmeric Powder" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Chili Powder</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Chili Powder" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Kashmiri Chili Powder</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Kashmiri Chili Powder" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Fenugreek (Methi)</span><span class="item-unit">box</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Fenugreek (Methi)" data-unit="box"/></div>
-        <div class="item-row"><span class="item-name">Chaat Masala</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Chaat Masala" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Cardamom</span><span class="item-unit">lbs</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cardamom" data-unit="lbs"/></div>
-        <div class="item-row"><span class="item-name">Cloves</span><span class="item-unit">lbs</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cloves" data-unit="lbs"/></div>
-        <div class="item-row"><span class="item-name">Cinnamon Sticks</span><span class="item-unit">lbs</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cinnamon Sticks" data-unit="lbs"/></div>
-        <div class="item-row"><span class="item-name">Bay Leaves</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Bay Leaves" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Ghee</span><span class="item-unit">jar</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Ghee" data-unit="jar"/></div>
-        <div class="item-row"><span class="item-name">Rose Water</span><span class="item-unit">btl</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Rose Water" data-unit="btl"/></div>
-        <div class="item-row"><span class="item-name">Mango Pulp (canned)</span><span class="item-unit">cans</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mango Pulp (canned)" data-unit="cans"/></div>
-        <div class="item-row"><span class="item-name">Tamarind Block</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Tamarind Block" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Paprika</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Paprika" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Besan</span><span class="item-unit">5lb</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Besan" data-unit="5lb"/></div>
-        <div class="item-row"><span class="item-name">Papad</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Papad" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Mustard Oil</span><span class="item-unit">btl</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mustard Oil" data-unit="btl"/></div>
-        <div class="item-row"><span class="item-name">Amchoor Powder</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Amchoor Powder" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Black Cardamom</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Black Cardamom" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Mace (Javitri)</span><span class="item-unit">pkt</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mace (Javitri)" data-unit="pkt"/></div>
-        <div class="item-row"><span class="item-name">Limca</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Limca" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Thumbs Up</span><span class="item-unit">case</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Thumbs Up" data-unit="case"/></div>
-        <div class="item-row"><span class="item-name">Mazaa – Mango</span><span class="item-unit">6-pk</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mazaa – Mango" data-unit="6-pk"/></div>
-        <div class="item-row"><span class="item-name">Mazaa – Lychee</span><span class="item-unit">6-pk</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mazaa – Lychee" data-unit="6-pk"/></div>
+        <div class="item-row"><span class="item-name">Bombay Biryani Mix</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Bombay Biryani Mix"/></div>
+        <div class="item-row"><span class="item-name">Curry Leaves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Curry Leaves"/></div>
+        <div class="item-row"><span class="item-name">Pilau Biryani Mix (Mild)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Pilau Biryani Mix (Mild)"/></div>
+        <div class="item-row"><span class="item-name">Rogan Josh Masala</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Rogan Josh Masala"/></div>
+        <div class="item-row"><span class="item-name">Madras Curry Powder</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Madras Curry Powder"/></div>
+        <div class="item-row"><span class="item-name">Garam Masala</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Garam Masala"/></div>
+        <div class="item-row"><span class="item-name">Tandoori Masala</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Tandoori Masala"/></div>
+        <div class="item-row"><span class="item-name">Cumin Powder</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cumin Powder"/></div>
+        <div class="item-row"><span class="item-name">Cumin Seeds</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cumin Seeds"/></div>
+        <div class="item-row"><span class="item-name">Coriander Powder</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Coriander Powder"/></div>
+        <div class="item-row"><span class="item-name">Turmeric Powder</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Turmeric Powder"/></div>
+        <div class="item-row"><span class="item-name">Chili Powder</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Chili Powder"/></div>
+        <div class="item-row"><span class="item-name">Kashmiri Chili Powder</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Kashmiri Chili Powder"/></div>
+        <div class="item-row"><span class="item-name">Fenugreek (Methi)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Fenugreek (Methi)"/></div>
+        <div class="item-row"><span class="item-name">Chaat Masala</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Chaat Masala"/></div>
+        <div class="item-row"><span class="item-name">Cardamom</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cardamom"/></div>
+        <div class="item-row"><span class="item-name">Cloves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cloves"/></div>
+        <div class="item-row"><span class="item-name">Cinnamon Sticks</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Cinnamon Sticks"/></div>
+        <div class="item-row"><span class="item-name">Bay Leaves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Bay Leaves"/></div>
+        <div class="item-row"><span class="item-name">Ghee</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Ghee"/></div>
+        <div class="item-row"><span class="item-name">Rose Water</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Rose Water"/></div>
+        <div class="item-row"><span class="item-name">Mango Pulp (canned)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mango Pulp (canned)"/></div>
+        <div class="item-row"><span class="item-name">Tamarind Block</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Tamarind Block"/></div>
+        <div class="item-row"><span class="item-name">Paprika</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Paprika"/></div>
+        <div class="item-row"><span class="item-name">Besan</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Besan"/></div>
+        <div class="item-row"><span class="item-name">Papad</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Papad"/></div>
+        <div class="item-row"><span class="item-name">Mustard Oil</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mustard Oil"/></div>
+        <div class="item-row"><span class="item-name">Amchoor Powder</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Amchoor Powder"/></div>
+        <div class="item-row"><span class="item-name">Black Cardamom</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Black Cardamom"/></div>
+        <div class="item-row"><span class="item-name">Mace (Javitri)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mace (Javitri)"/></div>
+        <div class="item-row"><span class="item-name">Limca</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Limca"/></div>
+        <div class="item-row"><span class="item-name">Thumbs Up</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Thumbs Up"/></div>
+        <div class="item-row"><span class="item-name">Mazaa – Mango</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mazaa – Mango"/></div>
+        <div class="item-row"><span class="item-name">Mazaa – Lychee</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Indian Store" data-item="Mazaa – Lychee"/></div>
       </div>
     </div>
     <div class="notes-area">
@@ -371,11 +333,11 @@
     <div class="section">
       <div class="section-header"><span class="section-icon">👨‍🍳</span><span class="section-title">Main Kitchen Prep Needed</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Makhani Sauce</span><span class="item-unit">pans</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Makhani Sauce" data-unit="pans"/></div>
-        <div class="item-row"><span class="item-name">Onion Gravy</span><span class="item-unit">pans</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Onion Gravy" data-unit="pans"/></div>
-        <div class="item-row"><span class="item-name">Chicken Curry</span><span class="item-unit">pans</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Chicken Curry" data-unit="pans"/></div>
-        <div class="item-row"><span class="item-name">Lamb Curry</span><span class="item-unit">pans</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Lamb Curry" data-unit="pans"/></div>
-        <div class="item-row"><span class="item-name">Onion Tadka</span><span class="item-unit">pans</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Onion Tadka" data-unit="pans"/></div>
+        <div class="item-row"><span class="item-name">Makhani Sauce</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Makhani Sauce"/></div>
+        <div class="item-row"><span class="item-name">Onion Gravy</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Onion Gravy"/></div>
+        <div class="item-row"><span class="item-name">Chicken Curry</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Chicken Curry"/></div>
+        <div class="item-row"><span class="item-name">Lamb Curry</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Lamb Curry"/></div>
+        <div class="item-row"><span class="item-name">Onion Tadka</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Main Kitchen" data-item="Onion Tadka"/></div>
       </div>
     </div>
     <div class="notes-area">
@@ -387,47 +349,47 @@
   <!-- ══ DISPOSABLES ═══════════════════════════════════════════════════════ -->
   <div class="list-panel" id="panel-disposables">
     <div class="section">
-      <div class="section-header"><span class="section-icon">🛍️</span><span class="section-title">Bags &amp; Liners</span></div>
+      <div class="section-header"><span class="section-icon">🛍️</span><span class="section-title">Bags & Liners</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Brown Paper Bags Lg<span class="item-hint">w/ handle</span></span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Brown Paper Bags Lg w/ Handle" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">#12 Small Paper Bags</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="#12 Small Paper Bags" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">#20 Medium Paper Bags</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="#20 Medium Paper Bags" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">13 Gal Clear Liners</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="13 Gal Clear Liners" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">45–50 Gal Black Trash Liners</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="45-50 Gal Black Trash Liners" data-unit="cases"/></div>
+        <div class="item-row"><span class="item-name">Brown Paper Bags Lg (w/ handle)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Brown Paper Bags Lg (w/ handle)"/></div>
+        <div class="item-row"><span class="item-name">#12 Small Paper Bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="#12 Small Paper Bags"/></div>
+        <div class="item-row"><span class="item-name">#20 Medium Paper Bags</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="#20 Medium Paper Bags"/></div>
+        <div class="item-row"><span class="item-name">13 Gal Clear Liners</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="13 Gal Clear Liners"/></div>
+        <div class="item-row"><span class="item-name">45-50 Gal Black Trash Liners</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="45-50 Gal Black Trash Liners"/></div>
       </div>
     </div>
     <div class="section">
-      <div class="section-header"><span class="section-icon">🥡</span><span class="section-title">Containers &amp; Cups</span></div>
+      <div class="section-header"><span class="section-icon">🥡</span><span class="section-title">Containers & Cups</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">24oz Round Container<span class="item-hint">Biryani</span></span><span class="item-unit">sleeves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="24oz Round Container (Biryani)" data-unit="sleeves"/></div>
-        <div class="item-row"><span class="item-name">16oz Deli Containers</span><span class="item-unit">sleeves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="16oz Deli Containers" data-unit="sleeves"/></div>
-        <div class="item-row"><span class="item-name">8oz Deli Containers</span><span class="item-unit">sleeves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="8oz Deli Containers" data-unit="sleeves"/></div>
-        <div class="item-row"><span class="item-name">4oz Portion Cups</span><span class="item-unit">sleeves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="4oz Portion Cups" data-unit="sleeves"/></div>
-        <div class="item-row"><span class="item-name">2oz Portion Cups</span><span class="item-unit">sleeves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="2oz Portion Cups" data-unit="sleeves"/></div>
-        <div class="item-row"><span class="item-name">4oz Cup Lids</span><span class="item-unit">sleeves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="4oz Cup Lids" data-unit="sleeves"/></div>
-        <div class="item-row"><span class="item-name">2oz Cup Lids</span><span class="item-unit">sleeves</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="2oz Cup Lids" data-unit="sleeves"/></div>
-        <div class="item-row"><span class="item-name">Large 3-Comp Foam</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Large 3-Comp Foam" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Medium 1-Comp Foam</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Medium 1-Comp Foam" data-unit="cases"/></div>
+        <div class="item-row"><span class="item-name">24oz Round Container (Biryani)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="24oz Round Container (Biryani)"/></div>
+        <div class="item-row"><span class="item-name">16oz Deli Containers</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="16oz Deli Containers"/></div>
+        <div class="item-row"><span class="item-name">8oz Deli Containers</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="8oz Deli Containers"/></div>
+        <div class="item-row"><span class="item-name">4oz Portion Cups</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="4oz Portion Cups"/></div>
+        <div class="item-row"><span class="item-name">2oz Portion Cups</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="2oz Portion Cups"/></div>
+        <div class="item-row"><span class="item-name">4oz Cup Lids</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="4oz Cup Lids"/></div>
+        <div class="item-row"><span class="item-name">2oz Cup Lids</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="2oz Cup Lids"/></div>
+        <div class="item-row"><span class="item-name">Large 3-Comp Foam</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Large 3-Comp Foam"/></div>
+        <div class="item-row"><span class="item-name">Medium 1-Comp Foam</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Medium 1-Comp Foam"/></div>
       </div>
     </div>
     <div class="section">
-      <div class="section-header"><span class="section-icon">🧴</span><span class="section-title">Cleaning &amp; Janitorial</span></div>
+      <div class="section-header"><span class="section-icon">🧴</span><span class="section-title">Cleaning & Janitorial</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Sanitizer<span class="item-hint">4-gallon</span></span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Sanitizer (4-gal)" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Dish Soap<span class="item-hint">4-gallon</span></span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Dish Soap (4-gal)" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Multifold Paper Towels</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Multifold Paper Towels" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Toilet Paper Rolls</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Toilet Paper Rolls" data-unit="cases"/></div>
+        <div class="item-row"><span class="item-name">Sanitizer (4-gal)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Sanitizer (4-gal)"/></div>
+        <div class="item-row"><span class="item-name">Dish Soap (4-gal)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Dish Soap (4-gal)"/></div>
+        <div class="item-row"><span class="item-name">Multifold Paper Towels</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Multifold Paper Towels"/></div>
+        <div class="item-row"><span class="item-name">Toilet Paper Rolls</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Toilet Paper Rolls"/></div>
       </div>
     </div>
     <div class="section">
       <div class="section-header"><span class="section-icon">🧤</span><span class="section-title">Service Supplies</span></div>
       <div class="section-body">
-        <div class="item-row"><span class="item-name">Cutlery Kits</span><span class="item-unit">cases</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Cutlery Kits" data-unit="cases"/></div>
-        <div class="item-row"><span class="item-name">Drinking Black Straws</span><span class="item-unit">boxes</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Drinking Black Straws" data-unit="boxes"/></div>
-        <div class="item-row"><span class="item-name">Gloves Large (Black)</span><span class="item-unit">boxes</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Gloves Large (Black)" data-unit="boxes"/></div>
-        <div class="item-row"><span class="item-name">Gloves Medium (Black)</span><span class="item-unit">boxes</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Gloves Medium (Black)" data-unit="boxes"/></div>
-        <div class="item-row"><span class="item-name">Plastic Film Roll (18")</span><span class="item-unit">rolls</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item='Plastic Film Roll (18")' data-unit="rolls"/></div>
-        <div class="item-row"><span class="item-name">Aluminum Foil</span><span class="item-unit">rolls</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Aluminum Foil" data-unit="rolls"/></div>
+        <div class="item-row"><span class="item-name">Cutlery Kits</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Cutlery Kits"/></div>
+        <div class="item-row"><span class="item-name">Drinking Black Straws</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Drinking Black Straws"/></div>
+        <div class="item-row"><span class="item-name">Gloves Large (Black)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Gloves Large (Black)"/></div>
+        <div class="item-row"><span class="item-name">Gloves Medium (Black)</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Gloves Medium (Black)"/></div>
+        <div class="item-row"><span class="item-name">Plastic Film Roll (18")</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Plastic Film Roll (18&quot;)"/></div>
+        <div class="item-row"><span class="item-name">Aluminum Foil</span><input class="qty-input" type="number" min="0" placeholder="0" data-list="Disposables" data-item="Aluminum Foil"/></div>
       </div>
     </div>
     <div class="notes-area">
@@ -436,18 +398,16 @@
     </div>
   </div>
 
-</div><!-- /container -->
+</div>
 
 <div class="submit-bar">
-  <button class="btn btn-reset" id="btn-reset" title="Reset form">🔄</button>
+  <button class="btn btn-reset" id="btn-reset">🔄</button>
   <button class="btn btn-copy" id="btn-copy">📋 Copy</button>
   <button class="btn btn-sms" id="btn-send">💬 Send via WhatsApp</button>
 </div>
 
 <script>
 (function () {
-
-  // Recipients
   var recipients = { rahul: true, nick: true };
   var PHONES = { rahul: '15596305815', nick: '16025152385' };
 
@@ -455,13 +415,11 @@
     row.addEventListener('click', function () {
       var id = row.dataset.rcpt;
       recipients[id] = !recipients[id];
-      var check = document.getElementById('check-' + id);
       row.classList.toggle('selected', recipients[id]);
-      check.textContent = recipients[id] ? '✓' : '';
+      document.getElementById('check-' + id).textContent = recipients[id] ? '✓' : '';
     });
   });
 
-  // Tabs
   document.querySelectorAll('.tab-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var tab = btn.dataset.tab;
@@ -472,7 +430,6 @@
     });
   });
 
-  // Qty inputs
   function updateBadges() {
     ['rd', 'indian', 'kitchen', 'disposables'].forEach(function (key) {
       var count = Array.from(document.getElementById('panel-' + key).querySelectorAll('.qty-input'))
@@ -490,7 +447,6 @@
     });
   });
 
-  // Build message
   function buildMessage() {
     var loc  = document.getElementById('location').value;
     var emp  = document.getElementById('empName').value.trim() || 'Staff';
@@ -529,13 +485,11 @@
     return msg;
   }
 
-  // Overlay
   function openOverlay()  { document.getElementById('overlay').classList.add('show'); }
   function closeOverlay() { document.getElementById('overlay').classList.remove('show'); }
   document.getElementById('overlay').addEventListener('click', function (e) { if (e.target === this) closeOverlay(); });
   document.getElementById('btn-close-preview').addEventListener('click', closeOverlay);
 
-  // Show preview
   function showPreview(mode) {
     document.getElementById('previewText').textContent = buildMessage();
     document.getElementById('sms-rahul').style.display = recipients.rahul ? '' : 'none';
@@ -547,7 +501,6 @@
   document.getElementById('btn-send').addEventListener('click', function () { showPreview('sms'); });
   document.getElementById('btn-copy').addEventListener('click', function () { showPreview('copy'); });
 
-  // WhatsApp
   document.getElementById('sms-rahul').addEventListener('click', function () {
     window.open('https://wa.me/' + PHONES.rahul + '?text=' + encodeURIComponent(buildMessage()), '_blank');
     closeOverlay();
@@ -557,24 +510,21 @@
     closeOverlay();
   });
 
-  // Copy
   function doCopy() {
     var text = document.getElementById('previewText').textContent;
     function done() { showToast('✅ Copied!'); }
-    if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done).catch(fallback); }
-    else { fallback(); }
-    function fallback() { var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); done(); }
+    if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done).catch(fb); }
+    else { fb(); }
+    function fb() { var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); done(); }
   }
   document.getElementById('btn-copy-preview').addEventListener('click', doCopy);
 
-  // Toast
   function showToast(msg) {
     var t = document.getElementById('toast');
     t.textContent = msg; t.classList.add('show');
     setTimeout(function () { t.classList.remove('show'); }, 2500);
   }
 
-  // Reset
   document.getElementById('btn-reset').addEventListener('click', function () {
     document.querySelectorAll('.qty-input').forEach(function (i) { i.value = ''; i.classList.remove('has-value'); });
     document.querySelectorAll('textarea').forEach(function (t) { t.value = ''; });
@@ -582,7 +532,6 @@
     updateBadges();
     showToast('🔄 Form cleared');
   });
-
 })();
 </script>
 </body>
